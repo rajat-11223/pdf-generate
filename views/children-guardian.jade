@@ -1,0 +1,29 @@
+block content 
+    article
+    h3 2.4 Guardian of any minor children
+    p I designate the following person to be the Guardian of my minor children until they come of legal age:
+    ul
+        li Guardian’s Full Legal Name: #{guardian.name}
+        li Relationship to Principal: #{guardian.relationship}
+        li Phone Number: #{guardian.phone}
+        li #{guardian.address} Address: #{guardian.postalAddress}
+        li #{guardian.email} Email: #{guardian.email}
+
+    p The Guardian, identified as #{guardian.name}, my #{guardian.relationship}, shall have full authority to act as the caretaker for all minors named in this Will. This responsibility includes, but is not limited to, making decisions regarding their education, medical needs, and day-to-day life.
+
+    if childrens
+        p #{childrens} Yes
+    if exclusions
+        p #{exclusions} Exclusions
+
+        article
+    h2 Article 3: Exclusions
+    p I intentionally and with full knowledge omit the following individuals from receiving any portion of my estate, whether through bequests, inheritance, or otherwise:
+
+    ol
+        each exclusion, index in exclusions
+            li
+                | #{exclusion.name}
+                ul
+                    li Relationship to Testator: #{exclusion.relationship}
+                    li Reason for Exclusion: #{exclusion.reason || "Exclusion None"} #{'Exclusion #' + (index + 1)}

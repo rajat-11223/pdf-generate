@@ -1,0 +1,27 @@
+extends layout
+block content
+  h1 Last Will and Testament of #{principalName}
+
+  h2 Article 1: Principal
+  p I, #{principalName}, a resident of #{principalCity}, #{principalCounty}, #{state}, being of sound mind and at least 18 years old, hereby declare this to be my Last Will. Any previous wills or codicils made by me are revoked.
+
+  h2 Article 2: Declarations
+
+  h3 2.1 Marital Status
+  case maritalStatus
+    when 'single'
+      p As of the date of this will, I am not in any relationship with a spouse.
+    when 'married'
+      p As of the date of this will, I am married to #{principalPartner}.
+    when 'defacto'
+      p As of the date of this will, I am in a de facto relationship with #{principalPartner}.
+
+  if children
+    h3 2.2 Children
+    p As of the date of this will, I have the following children:
+    ul
+      each child in children
+        li #{child.name}, Born #{child.dob}
+
+  h3 2.3 Later Born or Adopted Children
+  p If, after the execution of this Will, any additional child or children are born to or adopted by me, I direct that such birth or adoption shall not invalidate this Will. All references to my children and their descendants in this document shall include both my current children and their descendants, as well as any future-born or adopted children and their descendants.
